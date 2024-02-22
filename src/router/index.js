@@ -47,126 +47,114 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    children: [{
+    children: [
+      {
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
   {
-    path: '/example',
+    path: '/book',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/book/table',
+    name: '图书管理',
+    meta: { title: '图书管理', icon: 'el-icon-help'},
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'page',
+        name: '图书列表',
+        component: () => import('@/views/book/list'),
+        meta: { title: '图书列表', icon: 'table'}
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'save',
+        name: '添加图书',
+        component: () => import('@/views/book/save'),
+        meta: { title: '添加图书' },
+        hidden: true
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: ':id',
+        name: '编辑图书',
+        component: () => import('@/views/book/save'),
+        meta: { title: '编辑图书', noCache: true },
+        hidden: true
       }
     ]
   },
-
   {
-    path: 'external-link',
+    path: '/category',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: '/category',
+        name: '图书种类',
+        component: () => import('@/views/category/list'),
+        meta: { title: '图书种类', icon: 'el-icon-menu' }
       }
     ]
   },
-
+  {
+    path: '/publisher',
+    component: Layout,
+    children: [
+      {
+        path: 'page',
+        name: '出版社',
+        component: () => import('@/views/publisher/list'),
+        meta: { title: '出版社', icon: 'el-icon-menu' }
+      },
+      {
+        path: 'save',
+        name: '添加出版社',
+        component: () => import('@/views/publisher/save'),
+        meta: { title: '添加出版社' },
+        hidden: true
+      },
+      {
+        path: ':id',
+        name: '编辑出版社',
+        component: () => import('@/views/publisher/save'),
+        meta: { title: '编辑出版社', noCache: true },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/author',
+    component: Layout,
+    children: [
+      {
+        path: 'page',
+        name: '作者',
+        component: () => import('@/views/author/index.vue'),
+        meta: { title: '作者', icon: 'el-icon-menu' }
+      },
+      {
+        path: 'save',
+        name: '添加作者',
+        component: () => import('@/views/author/save'),
+        meta: { title: '添加作者' },
+        hidden: true
+      },
+      {
+        path: ':id',
+        name: '编辑作者',
+        component: () => import('@/views/author/save'),
+        meta: { title: '编辑作者', noCache: true },
+        hidden: true
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({ x:0, y: 0 }),
   routes: constantRoutes
 })
 
