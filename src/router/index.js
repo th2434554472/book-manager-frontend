@@ -148,6 +148,58 @@ export const constantRoutes = [
       }
     ]
   },
+  // {
+  //   path: '/receipt',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'page',
+  //       name: '账单',
+  //       component: () => import('@/views/receipt/index.vue'),
+  //       meta: { title: '账单', icon: 'el-icon-menu' }
+  //     },
+  //     {
+  //       path: 'save',
+  //       name: '添加账单',
+  //       component: () => import('@/views/receipt/save'),
+  //       meta: { title: '添加账单' },
+  //       hidden: true
+  //     },
+  //     {
+  //       path: ':id',
+  //       name: '编辑账单',
+  //       component: () => import('@/views/receipt/save'),
+  //       meta: { title: '编辑账单', noCache: true },
+  //       hidden: true
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/store',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'page',
+  //       name: '店铺',
+  //       component: () => import('@/views/store/index.vue'),
+  //       meta: { title: '店铺', icon: 'el-icon-menu' }
+  //     },
+  //     {
+  //       path: 'save',
+  //       name: '添加店铺',
+  //       component: () => import('@/views/store/save'),
+  //       meta: { title: '添加店铺' },
+  //       hidden: true
+  //     },
+  //     {
+  //       path: ':id',
+  //       name: '编辑店铺',
+  //       component: () => import('@/views/store/save'),
+  //       meta: { title: '编辑店铺', noCache: true },
+  //       hidden: true
+  //     }
+  //   ]
+  // },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
